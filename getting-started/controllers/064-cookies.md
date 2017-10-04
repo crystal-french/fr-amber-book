@@ -1,8 +1,7 @@
 # Cookies
+Les cookies sont créés et écrit à travers  **Amber::Base::Controller\#cookies**
 
-Cookies are read and written through **Amber::Base::Controller\#cookies**.
-
-The cookies being read are the ones received along with the request, the cookies being written will be sent out with the response. Reading a cookie does not get the cookie object itself back, just the value it holds.
+Les cookies en cours de lecture sont ceux reçus en même temps que la requête, le cookies qui sera écrit sera envoyé avec la réponse. La lecture du cookies n'aura pas d'object en retour, mais juste la valeur qu'il détient.
 
 It's advisable that you only store simple data \(strings and numbers\) in cookies. If you have to store complex objects, you would need to handle the conversion manually when reading the values on subsequent requests.
 

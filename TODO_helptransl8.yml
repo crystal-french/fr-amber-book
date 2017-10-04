@@ -1,7 +1,7 @@
 ---
 - assets/white_logo_color_background.jpg
 - getting-started/configuration/README.md
-- getting-started/controllers/064-cookies.md
+- getting-started/controllers/064-cookies.md                            -oliviermo75
 - getting-started/controllers/065-filters.md
 - getting-started/controllers/67-flash.md
 - getting-started/controllers/67-halting-requests.md
@@ -37,7 +37,7 @@
 - getting-started/websockets/README.md
 - preface/code-of-conduct.md
 - preface/contributing.md
-- README.md
+- README.md                                                             -oliviermo75
 - recipes/debugging/README.md
 - recipes/debugging/vs-code-debug.md
 - recipes/examples/amber-auth-example.md
