@@ -77,6 +77,3 @@ domain: %w(.example.com .example.org) # Autorise le cookie pour les noms de doma
 :secure     - Si ce cookie doit uniquement etre transmis aux serveur HTTPS.  Par défaut il est défini a false.
 :httponly   - Si le cookie se trouve être  accessible par scripting ou seulement par HTTP. Par défaut il est défini a false.
 ```
-
-
-
