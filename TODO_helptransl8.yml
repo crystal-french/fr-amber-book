@@ -1,8 +1,8 @@
 ---
 - assets/white_logo_color_background.jpg
-- getting-started/configuration/README.md
+- getting-started/configuration/README.md                               -oliviermo75
 - getting-started/controllers/064-cookies.md                            -oliviermo75
-- getting-started/controllers/065-filters.md
+- getting-started/controllers/065-filters.md                            -oliviermo75
 - getting-started/controllers/67-flash.md
 - getting-started/controllers/67-halting-requests.md
 - getting-started/controllers/params-validation.md

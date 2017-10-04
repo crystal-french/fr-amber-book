@@ -79,4 +79,3 @@ domain: %w(.example.com .example.org) # Autorise le cookie pour les noms de doma
 ```
 
 
-
