@@ -3,28 +3,30 @@ Les cookies sont créés et écrit à travers  **Amber::Base::Controller\#cookie
 
 Les cookies en cours de lecture sont ceux reçus en même temps que la requête, le cookies qui sera écrit sera envoyé avec la réponse. La lecture du cookies n'aura pas d'object en retour, mais juste la valeur qu'il détient.
 
-It's advisable that you only store simple data \(strings and numbers\) in cookies. If you have to store complex objects, you would need to handle the conversion manually when reading the values on subsequent requests.
 
-Amber also has an encrypted cookie jar for storing sensitive data. The encrypted cookie jar encrypts the values in addition to signing them, so that they cannot be read by the end user.
+Il est conseillé de ne stocker que des données simples \ (chaîne de caractères et nombres \) dans les cookies. Si vous devez stocker des objets complexes, vous devrez gérer la conversion manuellement lorsque vous lirez les valeurs sur les demandes ultérieures.
 
-### Examples of writing:
+
+Amber dispose également d'un cookie encrypté pour stocker les données sensibles. Le cookie encrypté jar chiffre les valeurs en plus de les signer,afin qu'elles ne puissent pas être lues par l'utilisateur final.
+
+### Exemples d'écriture:
 
 ```crystal
 class CommentsController < ApplicationController
   def new
-    # Auto-fill the commenter's name if it has been stored in a cookie
+    # Remplit automatiquement le nom du comment s'il a été stocké dans un cookie
     @comment = Comment.new(author: cookies[:commenter_name])
   end
 
   def create
     @comment = Comment.new(params[:comment])
     if @comment.save
-      flash[:notice] = "Thanks for your comment!"
+      flash[:notice] = "Merci de votre commentaire!"
       if params[:remember_name]
-        # Remember the commenter's name.
+        # Se rappeler du nom du comment.
         cookies[:commenter_name] = @comment.author
       else
-        # Delete cookie for the commenter's name cookie, if any.
+        # Supprime le cookie pour le nom du comment si il y a. 
         cookies.delete(:commenter_name)
       end
       redirect_to @comment.article
@@ -35,7 +37,7 @@ class CommentsController < ApplicationController
 end
 ```
 
-### Examples of Reading
+### Exemples de lecture 
 
 ```crystal
 cookies[:user_name]           # => "david"
@@ -44,7 +46,7 @@ JSON.parse(cookies[:lat_lon]) # => [47.68, -122.37]
 cookies.encrypted[:discount]  # => 45
 ```
 
-Please note that if you specify a :domain when setting a cookie, you must also specify the domain when deleting the cookie:
+Notez que si vous spécifiez un :domaine lors du réglage d'un cookie, vous devez également spécifier le domaine lors de la suppression du cookie:
 
 ```crystal
 cookies[:name] = {
@@ -54,28 +56,26 @@ cookies[:name] = {
 }
 cookies.delete(:name, domain: 'domain.com')
 ```
-
-The option symbols for setting cookies are:
+Les différents symboles d'option pour configurer les cookies sont:
 
 ```crystal
-:value  - The cookies value.
-:path   - The path for which this cookie applies. Defaults to the root of the application.
-:domain - The domain for which this cookie applies so you can restrict to the domain level. 
-          If you use a schema like www.example.com and want to share session with user.example.com 
-          set :domain to :all. Make sure to specify the :domain option with :all or Array again 
-          when deleting cookies.
+:value  - La valeur du cookie.
+:path   - Le chemin pour lequel ce cookie s'applique. Par défaut, la racine de l'application.
+:domain - Le domaine pour lequel ce cookie s'applique afin que l'on puisse restreindre le niveau du domaine.
+           Si vous utilisez un schéma comme www.example.com et que vous voulez partager la session avec user.exemple.com
+	   définissez :domain à :all . Assurez-vous de spécifier l'option :domain avec :all ou encore un tableau lorsque vous supprimerez les cookies.
 
-domain: nil                           # Does not set cookie domain. (default)
-domain: :all                          # Allow the cookie for the top most level domain and subdomains.
-domain: %w(.example.com .example.org) # Allow the cookie for concrete domain names.
+domain: nil                           # Ne définit pas le domain du cookie. (default)
+domain: :all                          # Autorise le cookie pour le plus haut niveau du domaine ainsi que pour les sous-domaines.
+domain: %w(.example.com .example.org) # Autorise le cookie pour les noms de domaine concrets.
 
-:tld_length - When using :domain => :all, this option can be used to explicitly set the TLD length 
-              when using a short (<= 3 character) domain that is being interpreted as part of a TLD. 
-              For example, to share cookies between user1.lvh.me and user2.lvh.me, set :tld_length to 1.
+:tld_length - Lors de l'utilisation de :domain => :all, cette option peut être utilisée pour définir explicitement la longueur du TLD  
+              Lorsque l'on utilise un domaine court (<= 3 caractères) qui est interprété comme partie d'un TLD 
+	      Par exemple si l'on partage un cookie entre user1.lvh.me et user2.lvh.me, il faut définir :tld_lenght à 1 
 
-:expires    - The time at which this cookie expires, as a Time object.
-:secure     - Whether this cookie is only transmitted to HTTPS servers. Default is false.
-:httponly   - Whether this cookie is accessible via scripting or only HTTP. Defaults to false.
+:expires    - L'heure à laquelle le cookie expire, comme objet dans le temps. 
+:secure     - Si ce cookie doit uniquement etre transmis aux serveur HTTPS.  Par défaut il est défini a false.
+:httponly   - Si le cookie se trouve être  accessible par scripting ou seulement par HTTP. Par défaut il est défini a false.
 ```
 
 
