@@ -22,3 +22,4 @@ after_action do
   only [:index, :world] { increment(1) }
 end
 ```
+
