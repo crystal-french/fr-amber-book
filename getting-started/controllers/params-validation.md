@@ -1,6 +1,9 @@
-# Params Validation
+# Validation de paramètres
 
-You will probably want to access data sent in by the user or other parameters in your controller actions. There are two kinds of parameters possible in a web application. The first are parameters that are sent as part of the URL, called query string parameters. The query string is everything after "?" in the URL. The second type of parameter is usually referred to as POST data. This information usually comes from an HTML form which has been filled in by the user. It's called POST data because it can only be sent as part of an HTTP POST request. Amber does not make any distinction between query string parameters and POST parameters, and both are available in the`params`hash in your controller:
+Vous souhaiterez probablement accéder aux données envoyées par l'utilisateur ou d'autres paramètres dans votre contrôleur. Il y a deux types de paramètres possibles dans une application Web.
+Les premiers sont les paramètres qui sont envoyés comme partie de l'URL, appelés requête de chaîne de carateres.
+La chaîne de carateres est tout ce qui se trouve après "?" dans l'URL. Le second type de paramètre fait généralement référence a des données POST. Ces informations proviennent généralement d'un formulaire HTML qui a été rempli par l'utilisateur.
+C'est appellé POST donnee, car il ne peut être envoyé que dans le cadre d'une requête HTTP POST. Amber ne fait aucune distinction entre les paramètres de la chaîne de requête et les paramètres POST, et les deux sont disponibles dans le hash `params` de votre contrôleur:
 
 ```crystal
 class UsersController < ApplicationController
@@ -17,7 +20,7 @@ class UsersController < ApplicationController
         redirect_to :index
     end
 
-    # Define parameters within actions
+    # Définir les paramètres dans les actions
     def update
         update_params = params do
           required(:name, "Your First Name is missing!") { |p| p.name? & !p.name.empty? }
@@ -38,10 +41,10 @@ class UsersController < ApplicationController
 end
 ```
 
-With Amber parameters validation is easy to keep your code organize
+Avec Amber les paramètres de validation, il est facile de garder le code organisé
 
 ```crystal
-# You can define modules to group your params validations
+#Vous pouvez définir des modules pour regrouper vos validations de paramètres
 module UserParams
     def create_paramms
         params do
@@ -76,7 +79,7 @@ class UsersController < ApplicationController
         redirect_to :index
     end
 
-    # Define parameters per actions
+    # Définitions des paramètres par action
     def update
 
         unless UserParams.update.valid?

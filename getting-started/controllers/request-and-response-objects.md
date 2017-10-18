@@ -1,8 +1,8 @@
-# Request and Response Objects
+#Requête et retour des objets  
 
-Request and Response objects are available to the controller as `request and response` methods.
+Le retour des objets et les requêtes sont disponibles au contrôleur comme méthodes `request and response`
 
-### The Request Object and Controller Helper Methods
+### Les méthodes Request Object et Controller Helper 
 
 It serves both to perform requests by an [`HTTP::Client`](https://crystal-lang.org/api/0.23.0/HTTP/Client.html)and to represent requests received by an[`HTTP::Server`](https://crystal-lang.org/api/0.23.0/HTTP/Server.html). A request always holds an [`IO`](https://crystal-lang.org/api/0.23.0/IO.html) as a body. When creating a request with a [`String`](https://crystal-lang.org/api/0.23.0/String.html) or [`Bytes`](https://crystal-lang.org/api/0.23.0/Bytes.html) its body will be a [`IO::Memory`](https://crystal-lang.org/api/0.23.0/IO/Memory.html) wrapping these, and the `Content-Length`header will be set appropriately.
 
