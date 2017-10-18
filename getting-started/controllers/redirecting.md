@@ -32,6 +32,3 @@ redirect_to(
 ```crystal
 redirect_back(status: 302, params: { "key" => "value" }, flash: { "user_id" => "1" })
 ```
-
-
-
