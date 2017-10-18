@@ -3,11 +3,11 @@
 - getting-started/configuration/README.md                               -oliviermo75
 - getting-started/controllers/064-cookies.md                            -oliviermo75
 - getting-started/controllers/065-filters.md                            -oliviermo75
-- getting-started/controllers/67-flash.md
-- getting-started/controllers/67-halting-requests.md
+- getting-started/controllers/67-flash.md                               nothing 
+- getting-started/controllers/67-halting-requests.md                    nothing
 - getting-started/controllers/params-validation.md
-- getting-started/controllers/README.md
-- getting-started/controllers/redirecting.md
+- getting-started/controllers/README.md                                 -oliviermo75
+- getting-started/controllers/redirecting.md                            -oliviermo75
 - getting-started/controllers/request-and-response-objects.md
 - getting-started/controllers/the-session.md
 - getting-started/deployment/heroku.md
