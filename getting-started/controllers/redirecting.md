@@ -1,22 +1,22 @@
 # Redirection
 
-Often, we need to redirect to a new url in the middle of a request. A successful`create`action, for instance, will usually redirect to the`show`action for the model we just created. Alternately, it could redirect to the`index`action to show all the things of that same type. There are plenty of other cases where redirection is useful as well.
+Souvent, nous avons a rediriger vers une nouvelle URL au milieu d'une requête. Une action `create` qui a réussie pour une instance, sera généralement redirigée vers l'action `show` pour le modèle que nous venons de créer. Autrement, elle pourrait etre rediriger vers l'action `index` pour montrer toutes les choses du même type. Il y a de nombreux autres cas où la redirection est également utile.
 
-Calling **redirect\_to** will halt the request lifecycle.
+Appel de ** redirect \ _to ** va interrompre le cycle de vie de la requête.
 
-**Redirect to URL**
+**Redirection vers un URL**
 
 ```crystal
 redirect_to(location: "", status: 302, params: { "key" => "value" }, flash: { "user_id" => "1" })
 ```
 
-**Redirect to Action**
+**Redirection vers une action**
 
 ```crystal
 redirect_to(action: :index, status: 302, params: { "key" => "value" }, flash: { "user_id" => "1" })
 ```
 
-**Redirect to Controller Action**
+**Redirection a un contrôleur d'action**
 
 ```crystal
 redirect_to(
@@ -27,7 +27,7 @@ redirect_to(
   flash: { "user_id" => "1" })
 ```
 
-**Redirect Back**
+**Renvoie**
 
 ```crystal
 redirect_back(status: 302, params: { "key" => "value" }, flash: { "user_id" => "1" })
