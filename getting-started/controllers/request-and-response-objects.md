@@ -4,36 +4,35 @@ Le retour des objets et les requêtes sont disponibles au contrôleur comme mét
 
 ### Les méthodes Request Object et Controller Helper 
 
-It serves both to perform requests by an [`HTTP::Client`](https://crystal-lang.org/api/0.23.0/HTTP/Client.html)and to represent requests received by an[`HTTP::Server`](https://crystal-lang.org/api/0.23.0/HTTP/Server.html). A request always holds an [`IO`](https://crystal-lang.org/api/0.23.0/IO.html) as a body. When creating a request with a [`String`](https://crystal-lang.org/api/0.23.0/String.html) or [`Bytes`](https://crystal-lang.org/api/0.23.0/Bytes.html) its body will be a [`IO::Memory`](https://crystal-lang.org/api/0.23.0/IO/Memory.html) wrapping these, and the `Content-Length`header will be set appropriately.
+Il sert les deux à la fois pour effectuer des requêtes par un [`HTTP::Client`](https://crystal-lang.org/api/0.23.0/HTTP/Client.html)et pour représenter les requêtes reçues par un [`HTTP::Server`](https://crystal-lang.org/api/0.23.0/HTTP/Server.html).Une requête contient toujours un [`IO`](https://crystal-lang.org/api/0.23.0/IO.html).Lorsque vous créez une requête avec un [`String`](https://crystal-lang.org/api/0.23.0/String.html) ou [`Bytes`](https://crystal-lang.org/api/0.23.0/Bytes.html) son corps sera un [`IO::Memory`](https://crystal-lang.org/api/0.23.0/IO/Memory.html) enveloppant ceci, et le `Content-Length` ainsi l'en-tête sera défini correctement.
 
-The request object contains a lot of useful information about the request coming in from the client. To get a full list of the available methods, refer to the Crystal  API Documentation [https://crystal-lang.org/api/0.23.0/HTTP/Request.html](https://crystal-lang.org/api/0.23.0/HTTP/Request.html)
+L'objet de la requête contient beaucoup d'informations utiles sur la requête en provenance du client. Pour obtenir une liste complète des méthodes disponibles, reportez-vous à la section Crystal API Documentation [https://crystal-lang.org/api/0.23.0/HTTP/Request.html](https://crystal-lang.org/api/0.23.0/HTTP/Request.html)
 
 | Controler Request Helper Methods | Purpose | Implemented? |
 | :--- | :--- | :--- |
-| host | The hostname used for this request. | Yes |
-| domain\(n=2\) | The hostname's first`n`segments, starting from the right \(the TLD\). | No |
-| format | The content type requested by the client. | Yes |
-| method | The HTTP method used for the request. | Yes |
-| get?, post?, patch?, put?, delete?, head? | Returns true if the HTTP method is GET/POST/PATCH/PUT/DELETE/HEAD. | Yes |
-| headers | Returns a hash containing the headers associated with the request. | Yes |
-| port | The port number \(integer\) used for the request. | Yes |
-| protocol | Returns a string containing the protocol used plus "://", for example "http://". | No |
-| query\_string | The query string part of the URL, i.e., everything after "?". | Yes |
-| client\_ip | The IP address of the client via cookie headers. | Yes  |
-| requested\_url | The entire URL used for the request. | No |
+| host | Le nom d'hôte utilisé pour cette requête. | Yes |
+| domain\(n=2\) | Les premiers segments du nom d'hôte, en partant de la droite \(le TLD\). | No |
+| format | Le type de contenu demandé par le client. | Yes |
+| method | La méthode HTTP utilisée pour la requête. | Yes |
+| get?, post?, patch?, put?, delete?, head? | renvoie true si la méthode HTTP est  GET/POST/PATCH/PUT/DELETE/HEAD. | Yes |
+| headers | Renvoie un hach contenant les en-têtes associés à la requête. | Yes |
+| port | Le numéro de port \ (integer \) utilisé pour la requête. | Yes |
+| protocol | Retourne une chaîne contenant le protocole utilisé plus "://", par exemple "http://". | No |
+| query\_string | La partie de la chaîne de caractere de la requête de l'URL, c'est-à-dire tout ce qui suit apres "?". | Yes |
+| client\_ip |  l @IP du client via les en-têtes de cookie. | Yes  |
+| requested\_url | L'URL complète utilisée pour les requetes. | No |
 
-### The Response Object
+### l' objet de réponse 
 
-The response object is not usually used directly, but is built up during the execution of the action and rendering of the data that is being sent back to the user, but sometimes - like in an after filter - it can be useful to access the response directly. Some of these accessor methods also have setters, allowing you to change their values. To get a full list of the available methods, refer to the [https://crystal-lang.org/api/0.23.0/HTTP/Server/Response.html](https://crystal-lang.org/api/0.23.0/HTTP/Server/Response.html)
 
-| Property of Response | Purpose |
+L'objet de réponse n'est pas généralement utilisé directement, mais il est construit pendant l'exécution de l'action et le rendu des données renvoyées à l'utilisateur,  parfois comme dans un post-filtre, il peut être utile d'accéder à la réponse directement. Certaines de ces méthodes accessor ont également des setters, vous permettant de changer leurs valeurs. Pour obtenir une liste complète des méthodes disponibles, reportez-vous a [https://crystal-lang.org/api/0.23.0/HTTP/Server/Response.html](https://crystal-lang.org/api/0.23.0/HTTP/Server/Response.html)
+
+| Propriété de réponse | Purpose |
 | :--- | :--- |
-| body | This is the string of data being sent back to the client. This is most often HTML. |
-| status | The HTTP status code for the response, like 200 for a successful request or 404 for file not found. |
-| location | The URL the client is being redirected to, if any. |
-| content\_type | The content type of the response. |
-| charset | The character set being used for the response. Default is "utf-8". |
-| headers | Headers used for the response. |
-
-
+| body | Il s'agit de la chaîne de données qui est renvoyée au client. C'est le plus souvent en HTML. |
+| status | Le code de status  HTTP pour la réponse, 200 pour une requete réussie ou  404  pour  file not found. |
+| location | L'URL vers laquelle le client est redirigé, le cas échéant. |
+| content\_type | Le type de contenu de la réponse. |
+| charset | Le jeu de caractères utilisé pour la réponse. Par défaut c'est "utf-8". |
+| headers | L'en-têtes utilisés pour la réponse.|
 
