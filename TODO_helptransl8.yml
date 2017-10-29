@@ -8,8 +8,8 @@
 - getting-started/controllers/params-validation.md
 - getting-started/controllers/README.md                                 -oliviermo75
 - getting-started/controllers/redirecting.md                            -oliviermo75
-- getting-started/controllers/request-and-response-objects.md
-- getting-started/controllers/the-session.md
+- getting-started/controllers/request-and-response-objects.md           -oliviermo75
+- getting-started/controllers/the-session.md                            -oliviermo75
 - getting-started/deployment/heroku.md
 - getting-started/deployment/README.md
 - getting-started/Installation/configuration.md
