@@ -4,7 +4,7 @@ Le retour des objets et les requêtes sont disponibles au contrôleur comme mét
 
 ### Les méthodes Request Object et Controller Helper 
 
-Il sert les deux à la fois pour effectuer des requêtes par un [`HTTP::Client`](https://crystal-lang.org/api/0.23.0/HTTP/Client.html)et pour représenter les requêtes reçues par un [`HTTP::Server`](https://crystal-lang.org/api/0.23.0/HTTP/Server.html).Une requête contient toujours un [`IO`](https://crystal-lang.org/api/0.23.0/IO.html).Lorsque vous créez une requête avec un [`String`](https://crystal-lang.org/api/0.23.0/String.html) ou [`Bytes`](https://crystal-lang.org/api/0.23.0/Bytes.html) son corps sera un [`IO::Memory`](https://crystal-lang.org/api/0.23.0/IO/Memory.html) enveloppant ceci, et le `Content-Length` ainsi l'en-tête sera défini correctement.
+Les deux servent à la fois pour effectuer des requêtes par un [`HTTP::Client`](https://crystal-lang.org/api/0.23.0/HTTP/Client.html)et pour redonner les requêtes reçues par un [`HTTP::Server`](https://crystal-lang.org/api/0.23.0/HTTP/Server.html).Une requête contient toujours un [`IO`](https://crystal-lang.org/api/0.23.0/IO.html).Lorsque vous créez une requête avec un [`String`](https://crystal-lang.org/api/0.23.0/String.html) ou [`Bytes`](https://crystal-lang.org/api/0.23.0/Bytes.html) son corps sera un [`IO::Memory`](https://crystal-lang.org/api/0.23.0/IO/Memory.html) enveloppant ceci, et le `Content-Length` ainsi l'en-tête sera défini correctement.
 
 L'objet de la requête contient beaucoup d'informations utiles sur la requête en provenance du client. Pour obtenir une liste complète des méthodes disponibles, reportez-vous à la section Crystal API Documentation [https://crystal-lang.org/api/0.23.0/HTTP/Request.html](https://crystal-lang.org/api/0.23.0/HTTP/Request.html)
 
@@ -22,10 +22,10 @@ L'objet de la requête contient beaucoup d'informations utiles sur la requête e
 | client\_ip |  l @IP du client via les en-têtes de cookie. | Yes  |
 | requested\_url | L'URL complète utilisée pour les requetes. | No |
 
-### l' objet de réponse 
+### l'objet de réponse 
 
 
-L'objet de réponse n'est pas généralement utilisé directement, mais il est construit pendant l'exécution de l'action et le rendu des données renvoyées à l'utilisateur,  parfois comme dans un post-filtre, il peut être utile d'accéder à la réponse directement. Certaines de ces méthodes accessor ont également des setters, vous permettant de changer leurs valeurs. Pour obtenir une liste complète des méthodes disponibles, reportez-vous a [https://crystal-lang.org/api/0.23.0/HTTP/Server/Response.html](https://crystal-lang.org/api/0.23.0/HTTP/Server/Response.html)
+L'objet de la réponse n'est généralement pas utilisé directement, mais il est construit pendant l'exécution de l'action et le rendu des données renvoyées à l'utilisateur,  parfois comme dans un post-filtre, il peut être utile d'accéder à la réponse directement. Certaines de ces méthodes accessor ont également des setters, vous permettant de changer leurs valeurs. Pour obtenir une liste complète des méthodes disponibles, reportez-vous a [https://crystal-lang.org/api/0.23.0/HTTP/Server/Response.html](https://crystal-lang.org/api/0.23.0/HTTP/Server/Response.html)
 
 | Propriété de réponse | Purpose |
 | :--- | :--- |
@@ -34,5 +34,4 @@ L'objet de réponse n'est pas généralement utilisé directement, mais il est c
 | location | L'URL vers laquelle le client est redirigé, le cas échéant. |
 | content\_type | Le type de contenu de la réponse. |
 | charset | Le jeu de caractères utilisé pour la réponse. Par défaut c'est "utf-8". |
-| headers | L'en-têtes utilisés pour la réponse.|
-
+| headers | Les en-têtes utilisés pour la réponse.|
